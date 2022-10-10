@@ -8,4 +8,4 @@ Modification of eNauczanie cockpit to show common feed
 
 ### Concept art
 
-![Concert art](./enauczanie-project.png)
+![Concept art](./images/enauczanie-project.png)
