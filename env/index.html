@@ -1723,6 +1723,28 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <link rel="stylesheet" href="style.css"/>
 
                 <script>
+                    function checkIfSingleDigit(value){
+                        if(value<10){
+                            return "0" + value;
+                        }
+                        return value;
+                    }
+                    function formatDate(secs){
+                        var date = new Date(1970, 0, 1);
+                        date.setMilliseconds(secs)
+
+                        var hrs = checkIfSingleDigit(date.getHours());
+                        var mins = checkIfSingleDigit(date.getMinutes());
+                        var d = checkIfSingleDigit(date.getDate());
+                        var month = checkIfSingleDigit(date.getMonth()+1);
+                        var year = date.getFullYear();
+
+                        
+
+                        return hrs + ":" + mins + ", " + d + "." + month + "." + year;
+
+                    }
+
                     async function getMessages(){
                         let response = await fetch("http://localhost:8080/message/all");
                         let data = await response.json();
@@ -1750,7 +1772,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                         let msgtime = document.createElement("time");
                         msgtime.setAttribute("class", "message-date")
-                        msgtime.innerHTML = messageDate;
+                        msgtime.innerHTML = formatDate(messageDate);
 
                         mainDiv.append(msgtime)
 
