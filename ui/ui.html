@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="description"
+			content="eNauczanie feed - project that utilizes the ability to inject any HTML, JS or CSS into eNauczanie in order to create an embedded communication app"
+		/>
+		<title>
+			eNauczanie Feed
+		</title>
+
+
+        <!-- fonts -->>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+
+        <!-- css -->>
+        <link rel="stylesheet" href="styles/general.css"/>
+    </head>
+    <body>
+        <header class="header">
+            <nav class="main-nav">
+                <ul class="main-nav--list">
+                    <li></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <p><span style="font-size: 50px;">Witaj</span></p>
+                <div id="feed-wrapper" style="background-color: gray";>
+                    <div id="msg-b" class="message-body">
+                        <p class="message-text">To jest wiadomość nr 1</p>
+                        <span class="message-author">Silentsky</span>
+                        <time class="message-date">11:23 wtorek, 09.09.22</time>
+                    </div>
+                </div>
+
+                <script>
+                     async function getMessages(){
+                        let response = await fetch("http://localhost:8080/message/all");
+                        let data = await response.json();
+                        return data;
+                    }
+
+                    function addFeedMessage(messageText, messageAuthor, messageDate ,index){
+                        var feedWrapper = document.getElementById("feed-wrapper");
+
+                        let mainDiv = document.createElement("div")
+                        mainDiv.setAttribute("id", "msg-"+toString(index))
+                        mainDiv.setAttribute("class", "message-body")
+
+                        let msgp = document.createElement("p")
+                        msgp.setAttribute("class", "message-text")
+                        msgp.innerHTML = messageText;
+
+                        mainDiv.append(msgp)
+
+                        feedWrapper.append(mainDiv)
+                        
+                    }
+
+                    
+                    getMessages().then(messages => {
+                        console.log("Pobrano")
+                        for(let i=0; i<messages.length; i++){
+                            msg = messages[i];
+                            addFeedMessage(msg.message, msg.author, msg.date, i);
+                        }
+                    })
+
+
+                </script>
+                </script>
+        </main>
+    </body>
+</html>
