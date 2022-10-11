@@ -1,0 +1,67 @@
+/* UNIVERSAL STYLES */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  *:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 0.4rem #3e89c638;
+  }
+  *:focus {
+    outline: none;
+  }
+
+  html {
+    /* 1 rem == 10px */
+    font-size: 62.5%;
+  }
+
+  body {
+    font-family: "Montserrat", sans-serif;
+  }
+
+/**********************/
+/* General components */
+/**********************/
+
+.grid {
+  display: grid;
+  gap: 9.6rem;
+  column-gap: 6.4rem;
+}
+
+.grid--2-cols {
+  grid-template-columns: repeat(2, 1fr);
+}
+.grid--3-cols {
+  grid-template-columns: repeat(3, 1fr);
+}
+.grid--4-cols {
+  grid-template-columns: repeat(4, 1fr);
+}
+.grid--5-cols {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+/***********************/
+/* LIST */
+/***********************/
+
+.list {
+  list-style: none;
+  font-size: 2rem;
+}
+
+.list--item {
+  text-decoration: none;
+}
+
+/*
+    FONT SIZE SYSTEM (px)
+    10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+    SPACING SYSTEM (px)
+    2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+*/
