@@ -1,0 +1,93 @@
+.message-body {
+    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
+    box-shadow: 2px 2px 5px 2px #000000;   
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 15px;
+}
+
+.message-text {
+    font-size: 50px;
+    margin-left:10px;
+}
+
+.message-author {
+    font-size: 17px;
+    margin-left: 15px;
+}
+
+.message-date {
+    float: right;
+    margin-right: 15px;
+}
+
+.message-image {
+    max-width: 500px;
+    max-height: 400px;
+    margin: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+}
+
+.message-image-div {
+    padding-bottom: 20px;
+    border-bottom: 1px solid gray;
+}
+
+#feed-section {
+    
+}
+
+.tab-wrapper {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab-wrapper button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab-wrapper button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab-wrapper button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+
+  #message-form{
+    font-size: 18px;
+  }
+
+  #input-message, #input-image {
+    font-size: 20px;
+    width: 100%;
+  }
+
+  #message-form button {
+    margin: 10px;
+    margin-left: 2px;
+    width: 100%;
+    background-color: #cfcfcf;
+  }
