@@ -1,35 +1,40 @@
 
-function readSingleFile(evt) {
-    //Retrieve the first (and only!) File from the FileList object
-    var f = evt.target.files[0];
-
-    if (f) {
-      var r = new FileReader();
-      r.onload = function(e) {
-        var contents = e.target.result;
-    }
-    r.readAsText(f);
-    } else {
-    console.log("readSingleFile: Failed to load file");
-  }
-}
-
 function injectionTemplate() {
+    return `
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Mixss/enauczanie-feed@ui-dev/env/style.css"/>
 
-    return "<p>sadasd</p>"
+    <div id="nickname">TwójNick</div>
+
+    <div id="feed-section">
+        <div class="tab-wrapper">
+            <button class="tablinks" onclick="openTab(event, 'feed-wrapper')">Feed</button>
+            <button class="tablinks" onclick="openTab(event,
+            'feed-new-message')">Nowa wiadomość</button>
+        </div>
+        <div id="feed-wrapper" class="tabcontent">
+        </div>
+
+        <div id="feed-new-message" class="tabcontent">
+            <h2>Dodaj nową wiadomość</h2>
+            <div id="message-form">
+                Treść wiadomości:<br>
+                <input id="input-message" type="text"/> <br>
+                Link do obrazka (opcjonalnie):<br>
+                <input id="input-image" type="text"/> <br/>
+                <button onclick="sendMessage()">Wyślij</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+    `
 }
-
-var fs = require('fs');
-
-    fs.readFile('injection-template.html', 'utf-8', function(err, data)) {
-        if (err) {
-            return console.log(err);
-        }
-        console.log(data);
-    }
-
-console.log("dupa dupa");
-console.log("chuj");
 
 const injection = injectionTemplate();
 document.getElementById("inject-here").insertAdjacentHTML("afterbegin", injection);
+
+var script = document.createElement('script');
+
+script.src = "https://cdn.jsdelivr.net/gh/Mixss/enauczanie-feed@ui-dev/scripts.css"
+
+document.getElementById("inject-here").appendChild(script);
