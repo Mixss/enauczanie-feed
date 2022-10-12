@@ -7,6 +7,8 @@ function checkIfSingleDigit(value){
 function formatDate(secs){
     var date = new Date(1970, 0, 1);
     date.setMilliseconds(secs)
+    var offset = date.getTimezoneOffset()
+    date.setTime(date.getTime() - (offset * 60000))
 
     var hrs = checkIfSingleDigit(date.getHours());
     var mins = checkIfSingleDigit(date.getMinutes());
