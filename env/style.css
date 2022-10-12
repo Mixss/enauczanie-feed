@@ -91,3 +91,7 @@
     width: 100%;
     background-color: #cfcfcf;
   }
+
+  #nickname {
+    display: none;
+  }

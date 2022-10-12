@@ -39,7 +39,7 @@ function openTab(evt, cityName) {
 } 
 
 async function getMessages(){
-    let response = await fetch("http://localhost:8080/message/newest/3");
+    let response = await fetch("http://enauczaniefeed-env.eba-zwwmej3f.eu-central-1.elasticbeanstalk.com/message/newest/3");
     let data = await response.json();
     return data;
 }
@@ -51,12 +51,12 @@ function sendMessage(){
     let messageImage = mesgImg == "" ? null : mesgImg;
 
     // let messageImage = document.getElementById("input-message").value;
-    let author = "nikt"
+    let author = document.getElementById("nickname").innerHTML;
 
     // sending POST to api
 
     var xhr = new XMLHttpRequest();
-    var url = "http://localhost:8080/message/add";
+    var url = "http://enauczaniefeed-env.eba-zwwmej3f.eu-central-1.elasticbeanstalk.com/message/add";
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function () {
