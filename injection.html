@@ -1,0 +1,98 @@
+<div id="feed-wrapper">
+    <div id="msg-b" class="message-body">
+        <p class="message-text">To jest przykładowa
+        wiadomość</p>
+        <div class="message-image-div">
+        <img class="message-image"
+        src="https://media.discordapp.net/attachments/914906630993363015/1029509371585118318/unknown.png"/>
+        </div>
+        <span class="message-author">Silentsky</span>
+        <time class="message-date">11:23 wtorek, 09.09.22</time>
+    </div>
+</div>
+
+<link rel="stylesheet" href="env/style.css"/>
+
+<script>
+    function checkIfSingleDigit(value){
+        if(value<10){
+            return "0" + value;
+        }
+        return value;
+    }
+    function formatDate(secs){
+        var date = new Date(1970, 0, 1);
+        date.setMilliseconds(secs)
+
+        var hrs = checkIfSingleDigit(date.getHours());
+        var mins = checkIfSingleDigit(date.getMinutes());
+        var d = checkIfSingleDigit(date.getDate());
+        var month = checkIfSingleDigit(date.getMonth()+1);
+        var year = date.getFullYear();
+
+        
+
+        return hrs + ":" + mins + ", " + d + "." + month + "." + year;
+
+    }
+
+    async function getMessages(){
+        let response = await fetch("http://localhost:8080/message/newest/3");
+        let data = await response.json();
+        return data;
+    }
+
+    function addFeedMessage(messageText, messageAuthor, messageDate, messageImage ,index){
+        var feedWrapper = document.getElementById("feed-wrapper");
+
+        let mainDiv = document.createElement("div")
+        mainDiv.setAttribute("id", "msg-"+toString(index))
+        mainDiv.setAttribute("class", "message-body")
+
+        let msgp = document.createElement("p")
+        msgp.setAttribute("class", "message-text")
+        msgp.innerHTML = messageText;
+
+        mainDiv.append(msgp)
+        
+        if(messageImage != null){
+            let msgImgDiv = document.createElement("div");
+            msgImgDiv.setAttribute("class", "message-image-div")
+            let msgImg = document.createElement("img");
+            msgImg.setAttribute("class", "message-image");
+            msgImg.setAttribute("src", messageImage)
+
+            msgImgDiv.append(msgImg);
+            mainDiv.append(msgImgDiv)
+        }
+
+        
+
+        let msgspan = document.createElement("span");
+        msgspan.setAttribute("class", "message-author");
+        msgspan.innerHTML = messageAuthor;
+
+        mainDiv.append(msgspan);
+
+        let msgtime = document.createElement("time");
+        msgtime.setAttribute("class", "message-date")
+        msgtime.innerHTML = formatDate(messageDate);
+
+        mainDiv.append(msgtime)
+
+
+        feedWrapper.append(mainDiv)
+        
+    }
+
+    
+    getMessages().then(messages => {
+        console.log("Pobrano")
+        for(let i=0; i<messages.length; i++){
+            msg = messages[i];
+            addFeedMessage(msg.message, msg.author, msg.date, msg.image, i);
+        }
+    })
+
+
+</script>

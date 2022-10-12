@@ -1711,13 +1711,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- START OF TEXT BLOCK -->
 
 
-                <p><span style="font-size: 50px;">Witaj</span></p>
                 <div id="feed-wrapper">
-                    <div id="msg-b" class="message-body">
-                        <p class="message-text">To jest przykładowa wiadomość</p>
+                    <!-- <div id="msg-b" class="message-body">
+                        <p class="message-text">To jest przykładowa
+                        wiadomość</p>
+                        <div class="message-image-div">
+                        <img class="message-image"
+                        src="https://media.discordapp.net/attachments/914906630993363015/1029509371585118318/unknown.png"/>
+                        </div>
                         <span class="message-author">Silentsky</span>
                         <time class="message-date">11:23 wtorek, 09.09.22</time>
-                    </div>
+                    </div> -->
                 </div>
 
                 <link rel="stylesheet" href="style.css"/>
@@ -1746,12 +1750,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     }
 
                     async function getMessages(){
-                        let response = await fetch("http://localhost:8080/message/all");
+                        let response = await fetch("http://localhost:8080/message/newest/3");
                         let data = await response.json();
                         return data;
                     }
 
-                    function addFeedMessage(messageText, messageAuthor, messageDate ,index){
+                    function addFeedMessage(messageText, messageAuthor, messageDate, messageImage ,index){
                         var feedWrapper = document.getElementById("feed-wrapper");
 
                         let mainDiv = document.createElement("div")
@@ -1763,6 +1767,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         msgp.innerHTML = messageText;
 
                         mainDiv.append(msgp)
+                        
+                        if(messageImage != null){
+                            let msgImgDiv = document.createElement("div");
+                            msgImgDiv.setAttribute("class", "message-image-div")
+                            let msgImg = document.createElement("img");
+                            msgImg.setAttribute("class", "message-image");
+                            msgImg.setAttribute("src", messageImage)
+
+                            msgImgDiv.append(msgImg);
+                            mainDiv.append(msgImgDiv)
+                        }
+
+                        
 
                         let msgspan = document.createElement("span");
                         msgspan.setAttribute("class", "message-author");
@@ -1786,7 +1803,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                         console.log("Pobrano")
                         for(let i=0; i<messages.length; i++){
                             msg = messages[i];
-                            addFeedMessage(msg.message, msg.author, msg.date, i);
+                            addFeedMessage(msg.message, msg.author, msg.date, msg.image, i);
                         }
                     })
 
