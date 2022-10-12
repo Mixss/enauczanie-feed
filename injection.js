@@ -35,6 +35,6 @@ document.getElementById("inject-here").insertAdjacentHTML("afterbegin", injectio
 
 var script = document.createElement('script');
 
-script.src = "https://cdn.jsdelivr.net/gh/Mixss/enauczanie-feed@ui-dev/scripts.css"
+script.src = "https://cdn.jsdelivr.net/gh/Mixss/enauczanie-feed@ui-dev/scripts.js"
 
 document.getElementById("inject-here").appendChild(script);
