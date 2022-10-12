@@ -1,5 +1,11 @@
-<div id="feed-wrapper">
-    <div id="msg-b" class="message-body">
+<div id="feed-section">
+    <div class="tab-wrapper">
+        <button class="tablinks" onclick="openTab(event, 'feed-wrapper')">Feed</button>
+        <button class="tablinks" onclick="openTab(event,
+        'feed-new-message')">Nowa wiadomość</button>
+    </div>
+    <div id="feed-wrapper" class="tabcontent">
+        <!-- <div id="msg-b" class="message-body">
         <p class="message-text">To jest przykładowa
         wiadomość</p>
         <div class="message-image-div">
@@ -8,10 +14,25 @@
         </div>
         <span class="message-author">Silentsky</span>
         <time class="message-date">11:23 wtorek, 09.09.22</time>
+    </div> -->
     </div>
+
+    <div id="feed-new-message" class="tabcontent">
+        <h2>Dodaj nową wiadomość</h2>
+        <div id="message-form">
+            Treść wiadomości:<br>
+            <input id="input-message" type="text"/> <br>
+            Link do obrazka (opcjonalnie):<br>
+            <input id="input-image" type="text"/> <br/>
+            <button onclick="sendMessage()">Wyślij</button>
+        </div>
+    </div>
+
+
+    
 </div>
 
-<link rel="stylesheet" href="env/style.css"/>
+<link rel="stylesheet" href="style.css"/>
 
 <script>
     function checkIfSingleDigit(value){
@@ -36,10 +57,67 @@
 
     }
 
+    function openTab(evt, cityName) {
+        // Declare all variables
+        var i, tabcontent, tablinks;
+
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    } 
+
     async function getMessages(){
         let response = await fetch("http://localhost:8080/message/newest/3");
         let data = await response.json();
         return data;
+    }
+
+    function sendMessage(){
+        let messageContent = document.getElementById("input-message").value;
+
+        var mesgImg = document.getElementById("input-image").value;
+        let messageImage = mesgImg == "" ? null : mesgImg;
+
+        // let messageImage = document.getElementById("input-message").value;
+        let author = "nikt"
+
+        // sending POST to api
+
+        var xhr = new XMLHttpRequest();
+        var url = "http://localhost:8080/message/add";
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+            var json = JSON.parse(xhr.responseText);
+            console.log("Jestem w ifie");
+        }
+        };
+        var dataToSend = JSON.stringify(
+            {
+                "message" : messageContent,
+                "author" : author,
+                "date" : null,
+                "image" : messageImage
+            }
+        )
+        xhr.send(dataToSend)
+        alert("Wiadomość została wysłana!")
+        messageContent.value = ""
+        messageImage.value = ""
+
     }
 
     function addFeedMessage(messageText, messageAuthor, messageDate, messageImage ,index){
@@ -94,5 +172,5 @@
         }
     })
 
-
+    openTab(event, 'feed-wrapper')
 </script>
