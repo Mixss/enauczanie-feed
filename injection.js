@@ -1,7 +1,7 @@
 
 function injectionTemplate() {
     return `
-    <link rel="stylesheet" href="https://enauczaniefeed-env.eba-zwwmej3f.eu-central-1.elasticbeanstalk.com/style"/>
+    <link rel="stylesheet" href="http://enauczaniefeed-env.eba-zwwmej3f.eu-central-1.elasticbeanstalk.com/style"/>
 
     <div id="nickname">TwójNick</div>
 
