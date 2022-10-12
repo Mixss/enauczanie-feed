@@ -84,7 +84,9 @@ function sendMessage(){
         }
     )
     xhr.send(dataToSend)
+   
     alert("Wiadomość została wysłana!")
+    document. location. reload();
     messageContent.value = ""
     messageImage.value = ""
 
