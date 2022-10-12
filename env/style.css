@@ -1,6 +1,6 @@
 .message-body {
-    -webkit-box-shadow: 5px 5px 15px 5px #000000; 
-    box-shadow: 2px 2px 5px 2px #000000;   
+    -webkit-box-shadow: 5px 5px 15px 5px #00000060;
+    box-shadow: 2px 2px 5px 2px #00000060;
     border-radius: 5px;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -8,7 +8,7 @@
 }
 
 .message-text {
-    font-size: 50px;
+    font-size: 2rem;
     margin-left:10px;
 }
 
@@ -38,13 +38,16 @@
 }
 
 #feed-section {
-    
+
 }
 
 .tab-wrapper {
     overflow: hidden;
     border: 1px solid #ccc;
     background-color: #f1f1f1;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
 }
 
 /* Style the buttons that are used to open the tab content */
@@ -57,17 +60,17 @@
     padding: 14px 16px;
     transition: 0.3s;
   }
-  
+
   /* Change background color of buttons on hover */
   .tab-wrapper button:hover {
     background-color: #ddd;
   }
-  
+
   /* Create an active/current tablink class */
   .tab-wrapper button.active {
     background-color: #ccc;
   }
-  
+
   /* Style the tab content */
   .tabcontent {
     display: none;
@@ -95,3 +98,7 @@
   #nickname {
     display: none;
   }
+
+.refresh-button {
+  align-self: baseline;
+}
