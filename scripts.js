@@ -86,10 +86,7 @@ function sendMessage(){
     xhr.send(dataToSend)
    
     alert("Wiadomość została wysłana!")
-    document. location. reload();
-    messageContent.value = ""
-    messageImage.value = ""
-
+    document.location.reload();
 }
 
 function addFeedMessage(messageText, messageAuthor, messageDate, messageImage ,index){
