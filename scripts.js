@@ -38,7 +38,7 @@ function openTab(evt, cityName) {
     // Show the current tab, and add an "active" class to the button that opened the tab
     document.getElementById(cityName).style.display = "block";
     evt.currentTarget.className += " active";
-} 
+}
 
 async function getMessages(){
     let response = await fetch("http://enauczaniefeed-env.eba-zwwmej3f.eu-central-1.elasticbeanstalk.com/message/newest/3");
@@ -94,7 +94,7 @@ function addFeedMessage(messageText, messageAuthor, messageDate, messageImage ,i
     msgp.innerHTML = messageText;
 
     mainDiv.append(msgp)
-    
+
     if(messageImage != null){
         let msgImgDiv = document.createElement("div");
         msgImgDiv.setAttribute("class", "message-image-div")
@@ -106,7 +106,7 @@ function addFeedMessage(messageText, messageAuthor, messageDate, messageImage ,i
         mainDiv.append(msgImgDiv)
     }
 
-    
+
 
     let msgspan = document.createElement("span");
     msgspan.setAttribute("class", "message-author");
@@ -129,7 +129,7 @@ getMessages().then(messages => {
     for(let i=0; i<messages.length; i++){
         msg = messages[i];
         addFeedMessage(msg.message, msg.author, msg.date, msg.image, i);
-        
+
     }
     openTab(event, 'feed-wrapper')
 })
