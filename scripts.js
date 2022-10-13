@@ -48,12 +48,20 @@ async function getMessages(){
 
 function sendMessage(){
     let messageContent = document.getElementById("input-message").value;
+    if (messageContent == "") {
+        alert("Message content cannot be empty");
+        return;
+    }
+    if (messageContent.length > 1000) {
+        alert("Message content cannot be longer than a thousand characters");
+        return;
+    }
 
     var mesgImg = document.getElementById("input-image").value;
     let messageImage = mesgImg == "" ? null : mesgImg;
 
     // let messageImage = document.getElementById("input-message").value;
-    let author = document.getElementById("nickname").innerHTML;
+    let author = document.getElementsByClassName("userinitials")[0].innerHTML;
 
     // sending POST to api
 
