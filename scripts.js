@@ -67,7 +67,8 @@ function sendMessage(){
         author = document.getElementsByClassName("userinitials")[0].innerHTML;
     }
     else {
-        author = document.getElementsByClassName("userpicture")[0];
+        let avatar_image = document.getElementsByClassName("userpicture")[0];
+        author = `<img src='`+avatar_image.src+`' class='userpicture' alt='' width='35' height='35'>`
     }
 
     // sending POST to api
