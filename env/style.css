@@ -29,12 +29,10 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
-    border: 1px solid black;
 }
 
 .message-image-div {
     padding-bottom: 20px;
-    border-bottom: 1px solid gray;
 }
 
 #feed-section {
@@ -88,12 +86,11 @@
     width: 100%;
   }
 
-  #message-form button {
+   #message-form button {
     margin: 10px;
     margin-left: 2px;
     width: 100%;
-    background-color: #cfcfcf;
-  }
+  } 
 
   #nickname {
     display: none;

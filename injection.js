@@ -1,7 +1,8 @@
 
 function injectionTemplate() {
     return `
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Mixss/enauczanie-feed@release-1-1-0/env/style.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Mixss/enauczanie-feed@release-1-1-1/env/style.css"/>
+    
 
     <div id="nickname">TwójNick</div>
 
@@ -21,7 +22,7 @@ function injectionTemplate() {
                 <input id="input-message" type="text"/> <br>
                 Link do obrazka (opcjonalnie):<br>
                 <input id="input-image" type="text"/> <br/>
-                <button onclick="sendMessage()">Wyślij</button>
+                <button class="btn btn-secondary" onclick="sendMessage()">Wyślij</button>
             </div>
         </div>
     </div>
@@ -35,6 +36,6 @@ document.getElementById("inject-here").insertAdjacentHTML("afterbegin", injectio
 
 var script = document.createElement('script');
 
-script.src = "https://cdn.jsdelivr.net/gh/Mixss/enauczanie-feed@release-1-1-0/scripts.js"
+script.src = "https://cdn.jsdelivr.net/gh/Mixss/enauczanie-feed@release-1-1-1/scripts.js"
 
 document.getElementById("inject-here").appendChild(script);
