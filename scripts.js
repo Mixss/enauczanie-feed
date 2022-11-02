@@ -61,7 +61,14 @@ function sendMessage(){
     let messageImage = mesgImg == "" ? null : mesgImg;
 
     // let messageImage = document.getElementById("input-message").value;
-    let author = document.getElementsByClassName("userinitials")[0].innerHTML;
+
+    let userinitials = document.getElementsByClassName("userinitials")[0];
+    if(typeof userinitials != "undefined"){
+        let author = document.getElementsByClassName("userinitials")[0].innerHTML;
+    }
+    else {
+        let author = document.getElementsByClassName("userpicture")[0];
+    }
 
     // sending POST to api
 
