@@ -1,7 +1,7 @@
 
 function injectionTemplate() {
     return `
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Mixss/enauczanie-feed@release-1-1-2/env/style.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Mixss/enauczanie-feed@release-1-1-3/env/style.css"/>
     
 
     <div id="nickname">TwójNick</div>
@@ -36,6 +36,6 @@ document.getElementById("inject-here").insertAdjacentHTML("afterbegin", injectio
 
 var script = document.createElement('script');
 
-script.src = "https://cdn.jsdelivr.net/gh/Mixss/enauczanie-feed@release-1-1-2/scripts.js"
+script.src = "https://cdn.jsdelivr.net/gh/Mixss/enauczanie-feed@release-1-1-3/scripts.js"
 
 document.getElementById("inject-here").appendChild(script);

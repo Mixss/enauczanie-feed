@@ -61,13 +61,13 @@ function sendMessage(){
     let messageImage = mesgImg == "" ? null : mesgImg;
 
     // let messageImage = document.getElementById("input-message").value;
-
+    var author = "";
     let userinitials = document.getElementsByClassName("userinitials")[0];
     if(typeof userinitials != "undefined"){
-        let author = document.getElementsByClassName("userinitials")[0].innerHTML;
+        author = document.getElementsByClassName("userinitials")[0].innerHTML;
     }
     else {
-        let author = document.getElementsByClassName("userpicture")[0];
+        author = document.getElementsByClassName("userpicture")[0];
     }
 
     // sending POST to api
