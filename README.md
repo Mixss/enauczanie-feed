@@ -43,7 +43,7 @@ even JS injections
 8. W nowym oknie wklej:
    ```
    <div id="inject-here"></div>
-   <script src="https://cdn.jsdelivr.net/gh/Mixss/enauczanie-feed@release-1-1-0/injection.js" type="text/javascript"></script>
+   <script src="https://cdn.jsdelivr.net/gh/Mixss/enauczanie-feed@main/injection.js" type="text/javascript"></script>
    ```
    ![screen-7](./images/screen-7.png)
 
@@ -65,7 +65,7 @@ blocks.
 8. Paste this code in the pop-up window:
    ```
    <div id="inject-here"></div>
-   <script src="https://cdn.jsdelivr.net/gh/Mixss/enauczanie-feed@release-1-1-0/injection.js"type="text/javascript"></script>
+   <script src="https://cdn.jsdelivr.net/gh/Mixss/enauczanie-feed@main/injection.js"type="text/javascript"></script>
    ```
 9. Update, then save changes.
 10. Try it out by going to the dashboard on eNauczanie!
