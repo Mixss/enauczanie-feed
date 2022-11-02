@@ -1,6 +1,9 @@
 # eNauczanie Feed
 
 Modify your eNauczanie dashboard to communicate with others!
+The `Feed` tab shows 3 newest messages sent by other users. To send a new message select
+`Nowa wiadomość` then type your message and/or paste link to an image. When you
+send it everybody else will see it!
 
 ## Table of concepts
 
