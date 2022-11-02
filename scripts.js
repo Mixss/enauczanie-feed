@@ -41,7 +41,7 @@ function openTab(evt, cityName) {
 }
 
 async function getMessages(){
-    let response = await fetch("https://enauczaniefeed-env.eba-zwwmej3f.eu-central-1.elasticbeanstalk.com/message/newest/3");
+    let response = await fetch("https://enauczanie-feed.herokuapp.com/message/newest/3");
     let data = await response.json();
     return data;
 }
@@ -66,7 +66,7 @@ function sendMessage(){
     // sending POST to api
 
     var xhr = new XMLHttpRequest();
-    var url = "https://enauczaniefeed-env.eba-zwwmej3f.eu-central-1.elasticbeanstalk.com/message/add";
+    var url = "https://enauczanie-feed.herokuapp.com/message/add";
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function () {

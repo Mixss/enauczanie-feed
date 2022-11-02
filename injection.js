@@ -1,7 +1,7 @@
 
 function injectionTemplate() {
     return `
-    <link rel="stylesheet" href="http://enauczaniefeed-env.eba-zwwmej3f.eu-central-1.elasticbeanstalk.com/style"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Mixss/enauczanie-feed@release-1-1-0/env/style.css"/>
 
     <div id="nickname">TwójNick</div>
 
@@ -35,6 +35,6 @@ document.getElementById("inject-here").insertAdjacentHTML("afterbegin", injectio
 
 var script = document.createElement('script');
 
-script.src = "https://cdn.jsdelivr.net/gh/Mixss/enauczanie-feed@release-1-01/scripts.js"
+script.src = "https://cdn.jsdelivr.net/gh/Mixss/enauczanie-feed@release-1-1-0/scripts.js"
 
 document.getElementById("inject-here").appendChild(script);
