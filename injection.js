@@ -1,7 +1,8 @@
 
+
 function injectionTemplate() {
     return `
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Mixss/enauczanie-feed@release-1-1-4/env/style.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Mixss/enauczanie-feed@release-1-1-5/env/style.css"/>
     
 
     <div id="nickname">TwójNick</div>
@@ -13,6 +14,7 @@ function injectionTemplate() {
             'feed-new-message')">Nowa wiadomość</button>
         </div>
         <div id="feed-wrapper" class="tabcontent">
+        <h2>Trwa ładowanie wiadomości...</h2>
         </div>
 
         <div id="feed-new-message" class="tabcontent">
@@ -36,6 +38,6 @@ document.getElementById("inject-here").insertAdjacentHTML("afterbegin", injectio
 
 var script = document.createElement('script');
 
-script.src = "https://cdn.jsdelivr.net/gh/Mixss/enauczanie-feed@release-1-1-4/scripts.js"
+script.src = "https://cdn.jsdelivr.net/gh/Mixss/enauczanie-feed@release-1-1-5/scripts.js"
 
 document.getElementById("inject-here").appendChild(script);

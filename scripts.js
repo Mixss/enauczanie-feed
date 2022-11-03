@@ -1,3 +1,8 @@
+const api_url = "https://enauczanie-feed.herokuapp.com"
+// https://enauczanie-feed.herokuapp.com
+
+var feed_messages_to_show = 3;
+
 function checkIfSingleDigit(value){
     if(value<10){
         return "0" + value;
@@ -41,7 +46,7 @@ function openTab(evt, cityName) {
 }
 
 async function getMessages(){
-    let response = await fetch("https://enauczanie-feed.herokuapp.com/message/newest/3");
+    let response = await fetch(api_url+"/message/newest/"+feed_messages_to_show);
     let data = await response.json();
     return data;
 }
@@ -74,13 +79,12 @@ function sendMessage(){
     // sending POST to api
 
     var xhr = new XMLHttpRequest();
-    var url = "https://enauczanie-feed.herokuapp.com/message/add";
+    var url = api_url+"/message/add";
     xhr.open("POST", url, true);
     xhr.setRequestHeader("Content-Type", "application/json");
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-        var json = JSON.parse(xhr.responseText);
-        console.log("Jestem w ifie");
+
     }
     };
     var dataToSend = JSON.stringify(
@@ -95,6 +99,27 @@ function sendMessage(){
    
     alert("Wiadomość została wysłana!")
     document.location.reload();
+}
+
+function showOlderMessages(){
+    feed_messages_to_show += 3;
+    loadFeedMessages();
+
+}
+
+function addShowMoreMessage(){
+    let feedWrapper = document.getElementById("feed-wrapper");
+    let morebutton_div = document.createElement("div");
+    morebutton_div.setAttribute("class", "morebutton");
+
+    let morebutton = document.createElement("a");
+    morebutton.setAttribute("onclick", "showOlderMessages()");
+    morebutton.setAttribute("href", "#feed-wrapper");
+    morebutton.innerHTML = "Zobacz starsze wiadomości";
+
+    morebutton_div.append(morebutton);
+
+    feedWrapper.append(morebutton_div);
 }
 
 function addFeedMessage(messageText, messageAuthor, messageDate, messageImage ,index){
@@ -139,13 +164,22 @@ function addFeedMessage(messageText, messageAuthor, messageDate, messageImage ,i
     feedWrapper.append(mainDiv)
 }
 
-getMessages().then(messages => {
-    console.log("Pobrano")
-    for(let i=0; i<messages.length; i++){
-        msg = messages[i];
-        addFeedMessage(msg.message, msg.author, msg.date, msg.image, i);
-
-    }
+function loadFeedMessages(){
+    document.getElementById("feed-wrapper").innerHTML = "";
+    getMessages().then(messages => {
+        console.log("Pobrano")
+        for(let i=0; i<messages.length; i++){
+            msg = messages[i];
+            addFeedMessage(msg.message, msg.author, msg.date, msg.image, i);
+        }
+        if(messages.length >= feed_messages_to_show)
+            addShowMoreMessage();
+    })
     openTab(event, 'feed-wrapper')
-})
+}
+
+
+loadFeedMessages();
+
+
 
