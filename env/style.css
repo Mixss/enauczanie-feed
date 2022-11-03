@@ -99,3 +99,8 @@
 .refresh-button {
   align-self: baseline;
 }
+
+.morebutton {
+  width: 100%;
+  text-align: center;
+}
