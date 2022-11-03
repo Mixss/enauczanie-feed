@@ -1,4 +1,4 @@
-const api_url = "http://localhost:8080"
+const api_url = "https://enauczanie-feed.herokuapp.com"
 // https://enauczanie-feed.herokuapp.com
 
 var feed_messages_to_show = 3;
