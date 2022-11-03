@@ -1,7 +1,8 @@
-const api_url = "https://enauczanie-feed.herokuapp.com"
+const api_url = "http://localhost:8080"
 // https://enauczanie-feed.herokuapp.com
 
 var feed_messages_to_show = 3;
+var feed_messages_shown = 0;
 
 function checkIfSingleDigit(value){
     if(value<10){
@@ -45,11 +46,12 @@ function openTab(evt, cityName) {
     evt.currentTarget.className += " active";
 }
 
-async function getMessages(){
-    let response = await fetch(api_url+"/message/newest/"+feed_messages_to_show);
+async function getMessages(api_query){
+    let response = await fetch(api_url+api_query);
     let data = await response.json();
     return data;
 }
+
 
 function sendMessage(){
     let messageContent = document.getElementById("input-message").value;
@@ -102,8 +104,9 @@ function sendMessage(){
 }
 
 function showOlderMessages(){
-    feed_messages_to_show += 3;
-    loadFeedMessages();
+    document.getElementsByClassName("morebutton")[feed_messages_shown/feed_messages_to_show].innerHTML = "";
+    feed_messages_shown += feed_messages_to_show;
+    getMessages("/message/older/"+feed_messages_shown+"/"+feed_messages_to_show).then(messages => putFetchedMessages(messages))
 
 }
 
@@ -114,7 +117,7 @@ function addShowMoreMessage(){
 
     let morebutton = document.createElement("a");
     morebutton.setAttribute("onclick", "showOlderMessages()");
-    morebutton.setAttribute("href", "#feed-wrapper");
+    morebutton.setAttribute("href", "#");
     morebutton.innerHTML = "Zobacz starsze wiadomości";
 
     morebutton_div.append(morebutton);
@@ -164,17 +167,19 @@ function addFeedMessage(messageText, messageAuthor, messageDate, messageImage ,i
     feedWrapper.append(mainDiv)
 }
 
+function putFetchedMessages(messages){
+    console.log("eNauczanie-feed data fetched successfully")
+    for(let i=0; i<messages.length; i++){
+        msg = messages[i];
+        addFeedMessage(msg.message, msg.author, msg.date, msg.image, i);
+    }
+    if(messages.length >= feed_messages_to_show)
+        addShowMoreMessage();
+}
+
 function loadFeedMessages(){
     document.getElementById("feed-wrapper").innerHTML = "";
-    getMessages().then(messages => {
-        console.log("Pobrano")
-        for(let i=0; i<messages.length; i++){
-            msg = messages[i];
-            addFeedMessage(msg.message, msg.author, msg.date, msg.image, i);
-        }
-        if(messages.length >= feed_messages_to_show)
-            addShowMoreMessage();
-    })
+    getMessages("/message/newest/"+feed_messages_to_show).then(messages => putFetchedMessages(messages))
     openTab(event, 'feed-wrapper')
 }
 
