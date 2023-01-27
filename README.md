@@ -17,7 +17,7 @@ send it everybody else will see it!
 ## Description
 
 This app utilizes the ability to create custom blocks in the dashboard, allowing
-even JS injections
+even JS injections. Message data is processed using [REST API](https://github.com/Mixss/enauczanie-feed-api).
 
 ## Installation steps
 
